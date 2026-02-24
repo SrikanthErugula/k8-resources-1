@@ -5,3 +5,5 @@ metadata:
   labels:  # LABELS ARE MANDATORY 
     environment: development
     project: roboshop
+
+# upto here is called skelton syntax   #sess-58
