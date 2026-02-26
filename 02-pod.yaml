@@ -11,5 +11,5 @@ spec:
   containers:
   - name: nginx
     image: nginx
-    # ports:
-    # - containerPort: 80  # ivvakapoina 80 port ni open chestundhi by defalut
+    ports:
+    - containerPort: 8080  # ivvakapoina 80 port ni open chestundhi by defalut
