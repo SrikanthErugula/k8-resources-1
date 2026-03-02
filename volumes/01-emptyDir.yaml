@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: empty-dir-demo
+  namespace:  default
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    volumeMounts:
+    - mountPath: /var/log/nginx  # ee dir lo logs store avuthai 
+      name: nginx-logs  # below  container level volume lo emi name vunte adi ivvali 
+
+  - name: almalinux
+    image: almalinux:9
+    command: ["sleep", "1000"]
+    volumeMounts:
+    - mountPath: /mnt/nginx-log  # our wish
+      name: nginx-logs
+      readOnly: true   #just for read the logs 
+
+  volumes:  # this is container level lo tag chesam
+  - name: nginx-logs
+    emptyDir:
+      sizeLimit: 100Mi
