@@ -24,3 +24,8 @@ spec:
       - name: nginx
         # image: nginx
         image: nginx:trixie-perl  # new image 
+
+    
+
+# so selectoir lo vunnna labels tisukoni velli aa pod ki match avuthunayo aa pod dhaggara template lo vunde 
+#configuraton tho new pod create chei ani means
