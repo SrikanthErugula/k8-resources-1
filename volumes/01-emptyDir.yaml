@@ -11,7 +11,7 @@ spec:
     - mountPath: /var/log/nginx  # ee dir lo logs store avuthai 
       name: nginx-logs  # below  container level volume lo emi name vunte adi ivvali 
 
-  - name: almalinux
+  - name: almalinux   # it behaves as sidecarr 
     image: almalinux:9
     command: ["sleep", "1000"]  
     volumeMounts:
@@ -19,7 +19,7 @@ spec:
       name: nginx-logs
       readOnly: true   #just for read the logs 
 
-  volumes:  # this is container level lo tag chesam
+  volumes:  # this is POD level lo tag chesam
   - name: nginx-logs
     emptyDir:
       sizeLimit: 100Mi
