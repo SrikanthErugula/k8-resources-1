@@ -13,3 +13,4 @@ spec:
     image: nginx
     ports:
     - containerPort: 8080  # ivvakapoina 80 port ni open chestundhi by defalut
+

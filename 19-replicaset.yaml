@@ -2,14 +2,14 @@ apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
   name: nginx
-  # these are replica set labels
+  # these are replica set resource ki vunde labels
   labels:
     purpose: rs-demo
     project: roboshop
 spec:
   replicas: 10
   selector:
-    # these labels are used to select pods
+    # these labels are used to select pods, which pod ni select chesi, duplicat pod creaet cheyali 
     matchLabels:
       purpose: rs-demo
       project: roboshop
@@ -22,4 +22,5 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:trixie-perl
+        # image: nginx
+        image: nginx:trixie-perl  # new image 

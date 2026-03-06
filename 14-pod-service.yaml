@@ -3,6 +3,7 @@ kind: Pod
 metadata:
   name: service-demo
   # These labels are used to register this pod with service 
+  #means pod velli edho oka service tho connect avvali below aa service lo ithe vunnayo it will go
   labels:
     project: roboshop
     component: frontend

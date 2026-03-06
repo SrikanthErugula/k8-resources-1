@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-np
+  name: nginx-np  # it works as DNS name internally 
 spec:
   type: NodePort
   selector:
