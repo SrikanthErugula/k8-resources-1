@@ -1,0 +1,70 @@
+# Creating PV is K8 admin job
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ebs-static
+spec:
+  accessModes:
+  - ReadWriteOnce   # https://kubernetes.io/docs/concepts/storage/persistent-volumes/  type readwrite we have 3 optins
+  persistentVolumeReclaimPolicy: Retain # retain means don't delete data, Recycle means delete data don't delete disk. 
+                                        #Delete means if POD deleted then  delete the disk
+  capacity:
+    storage: 15Gi
+  csi:
+    driver: ebs.csi.aws.com
+    fsType: ext4
+    volumeHandle: vol-08a1628c9a820c0e0 # this created by manul in AWS volume lo that is it 
+
+
+# Creating a PVC code is here 
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ebs-static
+spec:
+  storageClassName: "" # Empty string must be explicitly set otherwise default StorageClass will be set
+  volumeName: ebs-static
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 15Gi  # 15 kante ekkuva iste pod status is pending  and events lo error like PV less so u need to create under PV
+
+
+# Now we are adding above PVC to POD level 
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    purpose: ebs-static
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    volumeMounts:
+    - name: nginx-html
+      mountPath: /usr/share/nginx/html  # this ex pupose but real time lo code in git only 
+  nodeSelector:
+    topology.kubernetes.io/zone: us-east-1b  # we selet node bcz we have multiplr nodes 
+  volumes:
+  - name: nginx-html
+    persistentVolumeClaim:
+      claimName: ebs-static  # Name should be same In PVC spec lo above
+
+
+#Service code 
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-ebs-static
+spec:
+  type: LoadBalancer
+  selector:
+    purpose: ebs-static
+  ports:
+    - protocol: TCP
+      port: 80 # service port
+      targetPort: 80 # container port
+      nodePort: 30007 
