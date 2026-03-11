@@ -6,7 +6,7 @@ metadata:
   namespace: roboshop
 spec:
   containers:
-  # - name: nginx
-  #   image: ngindfdfadsfsaf
-  - name: almalinux
-    image: almalinux:9  # run chese cmd emi ledhu so we will get error 
+  - name: nginx
+    image: ngindfdfadsfsaf  # so here 2 types error one access issue and 2 nd one image name
+  # - name: almalinux
+  #   image: almalinux:9  # run chese cmd emi ledhu so we will get error 
