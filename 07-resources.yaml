@@ -8,11 +8,11 @@ spec:
     image: nginx
     resources:
       # soft limit
-      requests:
+      requests:  # this for container starting lo usage chesukoni storage 
         memory: "68Mi"
         cpu: "100m" # 1/10th of cpu
        # provide equal or more than requests  # these values euqls or grater then request values above 
       # hard limit
-      limits:
+      limits:  # max limit intha kante container ekkuva use chesukokuadhu 
         memory: "100Mi" 
         cpu: "120m"
