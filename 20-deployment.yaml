@@ -23,8 +23,8 @@ spec:
     spec:
       containers:
       - name: nginx
-        # image: nginx:trixie-perl 
-        image: nginx:latest # imaged changed 
+        image: nginx:trixie-perl 
+        # image: nginx:latest # imaged changed 
 
 
 # # --- sess-63-cl-6
