@@ -9,14 +9,14 @@ spec:
     storage: 5Gi # dummy, size is elastic
   volumeMode: Filesystem
   accessModes:
-    - ReadWriteOnce  # we can put it as ReadWritemany as well # https://kubernetes.io/docs/concepts/storage/persistent-volumes/ 
+    - ReadWriteMany  # we can put it as ReadWritemany as well # https://kubernetes.io/docs/concepts/storage/persistent-volumes/ 
   storageClassName: "" # should be empty in static
   persistentVolumeReclaimPolicy: Retain
   csi:
     driver: efs.csi.aws.com
     volumeHandle: fs-08ea446237bfb47e1  # this is will take AWS EFS --> file system lo 
 
-
+---
 # PVC creation 
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -25,12 +25,12 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: ""
+  storageClassName: ""  # bcz static ga chestunam
   resources:
     requests:
       storage: 5Gi
 
-
+---
 # POD creation 
 apiVersion: v1
 kind: Pod

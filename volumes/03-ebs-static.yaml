@@ -6,16 +6,16 @@ metadata:
 spec:
   accessModes:
   - ReadWriteOnce   # https://kubernetes.io/docs/concepts/storage/persistent-volumes/  type readwrite we have 3 optins
-  persistentVolumeReclaimPolicy: Retain # retain means don't delete data, Recycle means delete data don't delete disk. 
+  persistentVolumeReclaimPolicy: Retain # retain means don't delete data in disk, Recycle means delete data don't delete disk. 
                                         #Delete means if POD deleted then  delete the disk
   capacity:
     storage: 15Gi
   csi:
     driver: ebs.csi.aws.com
-    fsType: ext4
+    fsType: ext4  # latest we have u ask web for more
     volumeHandle: vol-08a1628c9a820c0e0 # this created by manul in AWS volume lo that is it 
 
-
+---
 # Creating a PVC code is here 
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -28,9 +28,9 @@ spec:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 15Gi  # 15 kante ekkuva iste pod status is pending  and events lo error like PV less so u need to create under PV
+      storage: 15Gi  # 50gi see error   # 15 kante ekkuva iste pod status is pending  and events lo error like PV less so u need to create under PV
 
-
+---
 # Now we are adding above PVC to POD level 
 
 apiVersion: v1
@@ -45,7 +45,7 @@ spec:
     image: nginx
     volumeMounts:
     - name: nginx-html
-      mountPath: /usr/share/nginx/html  # this ex pupose but real time lo code in git only 
+      mountPath: /usr/share/nginx/html  # this ex purpose but real time lo code in git only 
   nodeSelector:
     topology.kubernetes.io/zone: us-east-1b  # we selet node bcz we have multiplr nodes 
   volumes:
@@ -53,7 +53,7 @@ spec:
     persistentVolumeClaim:
       claimName: ebs-static  # Name should be same In PVC spec lo above
 
-
+---
 #Service code 
 apiVersion: v1
 kind: Service

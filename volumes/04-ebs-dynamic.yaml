@@ -14,6 +14,7 @@ spec:
       storage: 4Gi
 # upto here DISK and PV has been created 
 
+---
 # POD ki adding above disk
 apiVersion: v1
 kind: Pod

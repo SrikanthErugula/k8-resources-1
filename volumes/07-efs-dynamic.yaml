@@ -12,7 +12,7 @@ spec:
     requests:
       storage: 5Gi
 
-
+---
 # POD creation 
 apiVersion: v1
 kind: Pod
