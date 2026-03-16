@@ -6,7 +6,7 @@ metadata:
 spec:
   accessModes:
   - ReadWriteOnce   # https://kubernetes.io/docs/concepts/storage/persistent-volumes/  type readwrite we have 3 optins
-  persistentVolumeReclaimPolicy: Delete # retain means don't delete data in disk, Recycle means delete data don't delete disk. 
+  persistentVolumeReclaimPolicy: Delete # Retain # retain means don't delete data in disk, Recycle means delete data don't delete disk. 
                                         #Delete means if POD deleted then  delete the disk
   capacity:
     storage: 15Gi
