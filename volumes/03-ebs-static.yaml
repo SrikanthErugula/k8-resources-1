@@ -38,7 +38,7 @@ kind: Pod
 metadata:
   name: nginx
   labels:
-    purpose: ebs-static-pod
+    purpose: ebs-static-def
     practice: ebs # created by me
 spec:
   containers:
@@ -63,7 +63,7 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    purpose: ebs-static-pod
+    purpose: ebs-static-def
     practice: ebs # created by me
   ports:
     - protocol: TCP
