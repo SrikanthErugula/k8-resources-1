@@ -27,33 +27,14 @@ spec:
         # image: nginx:latest # imaged changed 
 
 ---
-# --- sess-63-cl-6
-# service code for deployement 
-apiVersion: v1
-kind: Service
-metadata:
-  name: nginx
-spec:
-  # type: LoadBalancer
-  selector:
-    purpose: headless-svc-demo
-    project: roboshop
-  ports:
-    - protocol: TCP
-      port: 80 # service port
-      targetPort: 80 # container port
-
-
----
-# # # --- sess-63-cl-6
-# # service code for HEADLESS
+# # --- sess-63-cl-6
+# # service code for deployement 
 # apiVersion: v1
 # kind: Service
 # metadata:
-#   name: nginx-headless
+#   name: nginx
 # spec:
-#   # if a service clusterIP then it is called as headless service
-#   clusterIP: None
+#   # type: LoadBalancer
 #   selector:
 #     purpose: headless-svc-demo
 #     project: roboshop
@@ -61,3 +42,22 @@ spec:
 #     - protocol: TCP
 #       port: 80 # service port
 #       targetPort: 80 # container port
+
+
+---
+# # --- sess-63-cl-6
+# service code for HEADLESS
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-headless
+spec:
+  # if a service clusterIP then it is called as headless service
+  clusterIP: None
+  selector:
+    purpose: headless-svc-demo
+    project: roboshop
+  ports:
+    - protocol: TCP
+      port: 80 # service port
+      targetPort: 80 # container port
