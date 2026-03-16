@@ -11,10 +11,10 @@ spec:
   accessModes:
     - ReadWriteMany  # we can put it as ReadWritemany as well # https://kubernetes.io/docs/concepts/storage/persistent-volumes/ 
   storageClassName: "" # should be empty in static
-  persistentVolumeReclaimPolicy: Retain
+  persistentVolumeReclaimPolicy: Delete
   csi:
     driver: efs.csi.aws.com
-    volumeHandle: fs-08ea446237bfb47e1  # this is will take AWS EFS --> file system lo 
+    volumeHandle: fs-0a0c153b5f0d9f697  # this is will take AWS EFS --> file system lo 
 
 ---
 # PVC creation 
@@ -51,3 +51,21 @@ spec:
   - name: nginx-html
     persistentVolumeClaim:
       claimName: efs-static
+
+---
+
+#Service code 
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-efs-static-sv
+spec:
+  type: LoadBalancer
+  selector:
+    purpose: efs-static
+    practice: ebs # created by me
+  ports:
+    - protocol: TCP
+      port: 80 # service port
+      targetPort: 80 # container port
+      # nodePort: 30007 
