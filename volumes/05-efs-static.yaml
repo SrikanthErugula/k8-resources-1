@@ -24,8 +24,9 @@ metadata:
   name: efs-static
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   storageClassName: ""  # bcz static ga chestunam
+  volumeName: efs-static
   resources:
     requests:
       storage: 5Gi
