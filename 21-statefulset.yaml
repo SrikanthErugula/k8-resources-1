@@ -70,7 +70,7 @@ spec:
       name: www
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: "roboshop-ebs"
+      storageClassName: "roboshop-ebs-sc"  # IT WILL BE COMES FROM VOLUME 04-SC
       resources:
         requests:
           storage: 1Gi
