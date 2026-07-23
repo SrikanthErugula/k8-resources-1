@@ -6,13 +6,12 @@ metadata:
 spec:
   accessModes:
   - ReadWriteOnce   # https://kubernetes.io/docs/concepts/storage/persistent-volumes/  type readwrite we have 3 optins
-  persistentVolumeReclaimPolicy: Delete # Retain # retain means don't delete data in disk, Recycle means delete data don't delete disk. 
-                                        #Delete means if POD deleted then  delete the disk
+  persistentVolumeReclaimPolicy: Delete # Retain # retain means don't delete data in disk, Recycle means delete data don't delete disk.  #Delete means if POD deleted then  delete the disk
   capacity:
     storage: 15Gi
   csi:
     driver: ebs.csi.aws.com
-    fsType: ext4  # latest we have u ask web for more
+    fsType: ext4  # latest,  ask web for more, fs means file syatem
     volumeHandle: vol-038b6cf22e8c51832 # this created by manul in AWS volume lo that is it 
 
 ---
@@ -64,7 +63,7 @@ spec:
   type: LoadBalancer
   selector:
     purpose: ebs-static-def
-    practice: ebs # created by me
+    practice: ebs # created by me, this key and value, bcz we can add many 
   ports:
     - protocol: TCP
       port: 80 # service port

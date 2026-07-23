@@ -13,6 +13,7 @@ spec:
     matchLabels:
       purpose: rs-demo
       project: roboshop
+
   # pod definition
   template:
     metadata:
@@ -28,7 +29,7 @@ spec:
     
 
 # so selectoir lo vunnna labels tisukoni velli aa pod ki match avuthunayo aa pod dhaggara template lo vunde 
-#configuraton tho new pod create chei ani means
+#configuraton tho new pod create chei if load is increased ani means
 
 
        

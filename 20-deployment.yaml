@@ -52,7 +52,7 @@ kind: Service
 metadata:
   name: nginx-headless
 spec:
-  # if a service clusterIP then it is called as headless service
+  # if a service has clusterIP then it is called as headless service
   clusterIP: None
   selector:
     purpose: headless-svc-demo

@@ -29,7 +29,7 @@ spec:
     volumeMounts:
     - name: nginx-html
       mountPath: /usr/share/nginx/html
-  # nodeSelector:   no need enable bcz sc will do autimatic with az 
+  # nodeSelector:   no need enable bcz storage class, will do autimatic with az 
   #   topology.kubernetes.io/zone: us-east-1b
   volumes:
   - name: nginx-html
