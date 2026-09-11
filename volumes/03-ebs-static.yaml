@@ -15,7 +15,7 @@ spec:
     volumeHandle: vol-038b6cf22e8c51832 # this created by manul in AWS volume lo that is it 
 
 ---
-# Creating a PVC code is here 
+# Creating a PVC code is here  DevOps engineer job
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
